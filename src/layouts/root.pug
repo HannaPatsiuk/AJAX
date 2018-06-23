@@ -1,0 +1,17 @@
+include ../../node_modules/bemto.pug/bemto
+include ../blocks/all
+
+- 
+	set_bemto_settings({
+		prefix: '',
+		element: '__',
+		modifier: '_'
+	})
+
+doctype html
+html
+	head
+		link(rel="stylesheet" href="/assets/app.css")
+	body
+		block content
+		script(src="/assets/app.js")
