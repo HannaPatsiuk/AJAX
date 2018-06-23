@@ -1,0 +1,7 @@
+mixin comments(items)
+	+b.comments
+		if !items || items.length === 0
+			+e.no-comments No comments yet
+		else
+			each item, index in items
+				+commentItem(index + 1, item)

@@ -1,0 +1,21 @@
+mixin commentItem(index, item, replyto)
+	+b.post
+		+e.avatar(src=item.avatarUrl)
+		+e.header #{index}.
+			|
+			|
+			+e.nickname(href=`${item.user}-user`)= item.user
+			|
+			|
+			if replyto
+				+e('span').replyto= replyto
+				|
+				|
+			+e('span').age #{item.daysOld} days ago
+		+e('p').body!= item.content
+		+e.buttons #[span Share] #[span Reply]
+
+		if item.children
+			+e.subposts
+				each child, subindex in item.children
+					+commentItem(`${index}.${subindex + 1}`, child, item.user)
